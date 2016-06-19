@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import NavigationBar from 'react-native-navbar';
+import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 
 import {
   AppRegistry,
@@ -18,7 +19,7 @@ class GroupFitness extends Component {
   render() {
 
     const titleConfig = {
-      title: 'Group Fitness',
+      title: 'GROUP FITNESS',
       tintColor: '#ffffff'
     };
 
@@ -33,18 +34,33 @@ class GroupFitness extends Component {
           title={titleConfig}
           statusBar={statusBarConfig} />
 
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Welcome to React Native!
-          </Text>
-          <Text style={styles.instructions}>
-            To get started, edit index.ios.js
-          </Text>
-          <Text style={styles.instructions}>
-            Press Cmd+R to reload,{'\n'}
-            Cmd+D or shake for dev menu
-          </Text>
-        </View>
+        <ScrollableTabView
+          style={styles.tabs}
+          tabBarUnderlineColor='#cc0814'
+          tabBarActiveTextColor='#cc0814'
+          tabBarTextStyle={styles.tabbar}
+          initialPage={0}
+          renderTabBar={() => <ScrollableTabBar />}
+          >
+          <View style={styles.tabContent} tabLabel='Seg'>
+              <Text style={styles.welcome}>
+                Welcome to React Native!
+              </Text>
+              <Text style={styles.instructions}>
+                To get started, edit index.ios.js
+              </Text>
+              <Text style={styles.instructions}>
+                Press Cmd+R to reload,{'\n'}
+                Cmd+D or shake for dev menu
+              </Text>
+          </View>
+          <Text tabLabel='Ter'>favorite</Text>
+          <Text tabLabel='Qua'>project</Text>
+          <Text tabLabel='Qui'>favorite</Text>
+          <Text tabLabel='Sex'>project</Text>
+          <Text tabLabel='Sab'>project</Text>
+          <Text tabLabel='Dom'>project</Text>
+        </ScrollableTabView>
 
       </View>
     );
@@ -52,26 +68,16 @@ class GroupFitness extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
   navbar: {
     backgroundColor: '#cc0814',
     height: 80,
   },
+  tabs: {
+    paddingTop: 20,
+  },
+  tabbar: {
+    fontWeight: 'bold'
+  }
 });
 
 AppRegistry.registerComponent('GroupFitness', () => GroupFitness);
