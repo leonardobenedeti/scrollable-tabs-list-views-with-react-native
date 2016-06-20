@@ -6,7 +6,10 @@
 
 import React, { Component } from 'react';
 import NavigationBar from 'react-native-navbar';
-import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import CustomTabBar from './CustomScrollTabBar';
+// import CustomListView from './CustomListView';
+
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import {
   AppRegistry,
@@ -36,13 +39,14 @@ class GroupFitness extends Component {
 
         <ScrollableTabView
           style={styles.tabs}
-          tabBarUnderlineColor='#cc0814'
-          tabBarActiveTextColor='#cc0814'
+          tabBarBackgroundColor='#e7e7e7'
+          tabBarUnderlineColor='transparent'
+          tabBarActiveTextColor='#ffffff'
           tabBarTextStyle={styles.tabbar}
           initialPage={0}
-          renderTabBar={() => <ScrollableTabBar />}
+          renderTabBar={() => <CustomTabBar />}
           >
-          <View style={styles.tabContent} tabLabel='Seg'>
+          <View tabLabel='Seg'>
               <Text style={styles.welcome}>
                 Welcome to React Native!
               </Text>
@@ -54,7 +58,11 @@ class GroupFitness extends Component {
                 Cmd+D or shake for dev menu
               </Text>
           </View>
-          <Text tabLabel='Ter'>favorite</Text>
+          <View tabLabel='Ter'>
+              <Text style={styles.welcome}>
+                Welcome to React Native!
+              </Text>
+          </View>
           <Text tabLabel='Qua'>project</Text>
           <Text tabLabel='Qui'>favorite</Text>
           <Text tabLabel='Sex'>project</Text>
@@ -73,11 +81,13 @@ const styles = StyleSheet.create({
     height: 80,
   },
   tabs: {
-    paddingTop: 20,
+    // paddingTop: 20,
   },
   tabbar: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+    alignItems: 'center',
+    paddingTop: 20,
+  },
 });
 
 AppRegistry.registerComponent('GroupFitness', () => GroupFitness);
